@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassromController;
 use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,7 @@ Route::group(
 
 
 Route::resource('grade', GradeController::class);
+Route::resource('classrom', ClassromController::class);
 
 });
 

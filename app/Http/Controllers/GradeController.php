@@ -6,6 +6,7 @@ use App\Http\Requests\StoreGrade;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 use CodeZero\UniqueTranslation\UniqueTranslationRule;
+use PhpParser\Node\Stmt\TryCatch;
 
 class GradeController extends Controller
 {
@@ -87,8 +88,26 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(StoreGrade $request)
   {
+      try{
+
+
+        $validated = $request->validated();
+        $Grade= Grade::findorFail($request->id);
+        $Grade->update([
+             $Grade->Name =['en' => $request->Name_en , "ar" => $request->Name],
+             $Grade->Node = $request->Notes
+        ]);
+
+         toastr()->success(trans("messages.Update"));
+          return redirect()->route('grade.index');
+
+      }
+
+      catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
 
   }
 
@@ -98,8 +117,20 @@ class GradeController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request $request)
   {
+
+    try{
+
+        $Grade= Grade::findorFail($request->id)->delete();
+
+          toastr()->success(trans("messages.Delete"));
+          return redirect()->route('grade.index');
+    }
+
+    catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
 
   }
 
