@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ClassromController;
-use App\Http\Controllers\GradeController;
+
+use App\Http\Controllers\SectionController;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +39,32 @@ Route::group(
 } );
 
 
-Route::resource('grade', GradeController::class);
-Route::resource('classrom', ClassromController::class);
+Route::resource('grade', "GradeController");
+Route::resource('classrom', "ClassromController");
 
+Route::resource('section', "SectionController");
+
+ Route::get('/classes/{id}',  "SectionController@getclasses");
+
+ Route::view('add_parent', 'livewire.show_form')->name("add_parent");
+ Route::view('show_parent', 'livewire.show_table')->name("show_parent");
+  Route::group(['namespace' => 'Teachers'], function () {
+    Route::resource('teacher', 'TeacherController');
+  });
+
+
+  Route::group(['namespace' => 'Students'], function () {
+    Route::resource('Students', "StudentController");
+    Route::get("Get_classrooms/{id}" , "StudentController@Get_classrooms");
+    Route::get("Get_Sections/{id}" , "StudentController@Get_Sections" );
+    Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
+    Route::resource('library', 'LibraryController');
+    Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');
+
+     Route::get('Download_attachment/{studentsname}/{filename}', 'StudentController@Download_attachment')->name('Download_attachment');
+
+     Route::post('Delete_attachment', 'StudentController@Delete_attachment')->name('Delete_attachment');
+  });
 });
 
 

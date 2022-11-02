@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Classrom;
+use App\Models\Grade;
 use Illuminate\Http\Request;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class ClassromController extends Controller
 {
@@ -16,7 +18,8 @@ class ClassromController extends Controller
   public function index()
   {
       $Classroms = Classrom::all();
-      return view("classroms.Classroms" , compact("Classroms"));
+      $Grades = Grade::all();
+      return view("classroms.Classroms" , compact("Classroms" , "Grades"));
   }
 
   /**
@@ -36,6 +39,26 @@ class ClassromController extends Controller
    */
   public function store(Request $request)
   {
+      $list_classes= $request->List_Classes;
+
+     try{
+
+        foreach($list_classes as $classroom){
+           $newclassroom  = new Classrom();
+           $newclassroom->Name_class =['en' => $classroom["Name_class_en"] , "ar" => $classroom["Name"]];
+           $newclassroom->grade_id=$classroom["Grade_id"];
+          $newclassroom->save();
+
+        }
+
+         toastr()->success(trans('messages.success'));
+          return redirect()->route('classrom.index');
+
+     }
+     catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
+
 
   }
 
@@ -67,8 +90,24 @@ class ClassromController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request)
   {
+      $classroom = Classrom::findorFail($request->id);
+      try{
+
+        $classroom->update([
+              $classroom->Name_class =['en' =>$request->Name_class_en , "ar" =>  $request->Name],
+           $classroom->grade_id =$request->Grade_id
+        ]);
+
+         toastr()->success(trans('messages.success'));
+          return redirect()->route('classrom.index');
+      }
+
+      catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
+
 
   }
 
@@ -78,8 +117,23 @@ class ClassromController extends Controller
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
+  public function destroy(Request  $request)
   {
+
+    try{
+        $id = $request->id;
+          Classrom::findorFail($id)->delete();
+
+         toastr()->success(trans('messages.success'));
+          return redirect()->route('classrom.index');
+    }
+
+    catch (\Exception $e){
+          return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+      }
+
+
+
 
   }
 

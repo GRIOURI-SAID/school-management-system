@@ -10,16 +10,10 @@
                             <div class="pull-left"><i class="ti-home"></i><span
                                     class="right-nav-text">{{ trans('trans.Dashboard') }}</span>
                             </div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="pull-right"></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="dashboard" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="index.html">Dashboard 01</a> </li>
-                            <li> <a href="index-02.html">Dashboard 02</a> </li>
-                            <li> <a href="index-03.html">Dashboard 03</a> </li>
-                            <li> <a href="index-04.html">Dashboard 04</a> </li>
-                            <li> <a href="index-05.html">Dashboard 05</a> </li>
-                        </ul>
+
                     </li>
                     <!-- menu title -->
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title"></li>
@@ -47,10 +41,77 @@
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('classrom.index') }}">{{ trans('My_Classes_trans.List_classes') }}
                                 </a> </li>
-                            <li> <a href="calendar-list.html">List Calendar</a> </li>
+
                         </ul>
                     </li>
-                    <!-- menu item todo-->
+
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-men">
+                            <div class="pull-left"><i class="ti-calendar"></i><span
+                                    class="right-nav-text">{{ trans('Sections_trans.title_page') }} </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="calendar-men" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('section.index') }}">{{ trans('Sections_trans.List_Grade') }}
+                                </a> </li>
+
+                        </ul>
+                    </li>
+                    <!-- menu Parent-->
+
+
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Parent-menu">
+                            <div class="pull-left"><i class="ti-calendar"></i><span
+                                    class="right-nav-text">{{ trans('Parent_trans.Parents') }} </span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Parent-menu" class="collapse" data-parent="#sidebarnav">
+
+
+                            <li> <a href="{{ Url('add_parent') }}">{{ trans('Parent_trans.List_Parents') }}
+                                </a> </li>
+
+                        </ul>
+                    </li>
+
+                    <!-- menu Teacher-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart">
+                            <div class="pull-left"><i class="ti-pie-chart"></i><span
+                                    class="right-nav-text">{{ trans('main_trans.Teachers') }}</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="chart" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('teacher.index') }}">{{ trans('main_trans.List_Teachers') }}</a>
+                            </li>
+                            <li> <a href="chart-morris.html">Chart morris </a> </li>
+                            <li> <a href="chart-sparkline.html">Chart Sparkline</a> </li>
+                        </ul>
+                    </li>
+
+                         <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#students-menu"><i class="fas fa-user-graduate"></i>{{trans('main_trans.students')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+            <ul id="students-menu" class="collapse">
+                <li>
+                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#Student_information">{{trans('main_trans.Student_information')}}<div class="pull-right"><i class="ti-plus"></i></div><div class="clearfix"></div></a>
+                    <ul id="Student_information" class="collapse">
+                        <li> <a href="{{route('Students.create')}}">{{trans('main_trans.add_student')}}</a></li>
+                        <li> <a href="{{route('Students.index')}}">{{trans('main_trans.list_students')}}</a></li>
+                    </ul>
+                </li>
+
+
+
+
+            </ul>
+        </li>
+
+
                     <li>
                         <a href="todo-list.html"><i class="ti-menu-alt"></i><span class="right-nav-text">Todo
                                 list</span> </a>
@@ -98,7 +159,8 @@
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">Widgets, Forms & Tables </li>
                     <!-- menu item Widgets-->
                     <li>
-                        <a href="widgets.html"><i class="ti-blackboard"></i><span class="right-nav-text">Widgets</span>
+                        <a href="widgets.html"><i class="ti-blackboard"></i><span
+                                class="right-nav-text">Widgets</span>
                             <span class="badge badge-pill badge-danger float-right mt-1">59</span> </a>
                     </li>
                     <!-- menu item Form-->

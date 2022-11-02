@@ -3,12 +3,12 @@
 return [
 
     'title_page' => 'الاقسام',
-    'List_Grade' => 'List_Grade',
+    'List_Grade' => 'قائمة الاقسام',
     'add_section' => 'اضافة قسم',
     'edit_Section'=> 'تعديل قسم',
     'delete_Section'=> 'حذف قسم',
     'Warning_Section'=> 'هل انت متاكد من عملية الحذف',
-    'Section_name_ar' => 'اسم القسم باللغة العربية',
+    'Section_name_ar' => 'اسم الكقسم باللغة العربية',
     'Section_name_en' => 'اسم القسم باللغة الانجليزية',
     'Select_Grade' => '-- حدد المرحلة --',
     'Name_Grade' => 'اسم المرحلة',

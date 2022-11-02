@@ -8,9 +8,9 @@ class CreateClassromsTable extends Migration {
 	public function up()
 	{
 		Schema::create('Classroms', function(Blueprint $table) {
-			$table->increments('id');
+			$table->id();
 			$table->string('Name_class');
-			$table->integer('grade_id')->unsigned();
+			$table->bigInteger('grade_id')->unsigned();
 			$table->timestamps();
 		});
 	}
