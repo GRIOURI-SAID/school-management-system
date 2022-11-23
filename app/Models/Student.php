@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class Student extends Model
 {
+    use SoftDeletes;
     use HasTranslations;
     public $translatable = ['name'];
     protected $guarded =[];
@@ -48,6 +50,10 @@ class Student extends Model
 
     public function myparent(){
         return $this->belongsTo("App\Models\My_Parent" , "parent_id");
+    }
+
+    public  function  attendance (){
+          return $this->hasMany("App\Models\Attendance" , "student_id");
     }
 
 }
