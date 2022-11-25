@@ -89,6 +89,10 @@ Route::resource('section', "SectionController");
     Route::group(['namespace'=>'Quizzes' ] , function (){
         Route::resource("Quizzes" , "QuizzeController");
     });
+
+    Route::group(['namespace'=>'Questions' ] , function (){
+        Route::resource("Questions" , "QestionController");
+    });
 });
 
 

@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Repository\FeeInvoiceRepositoryInterface;
 use App\Repository\FeeRepositoryInterface;
 use App\Repository\GraduatedRepositoryInterface;
+use App\Repository\QuestionRepositoryInterface;
 use App\Repository\QuizzeRepositoryInterface;
 use App\Repository\SubjectRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
@@ -30,6 +31,8 @@ class RepoServiceProvider extends ServiceProvider
          $this->app->bind('App\Repository\AttendanceRepositoryInterface', 'App\Repository\AttendanceRepository');
          $this->app->bind('App\Repository\SubjectRepositoryInterface', 'App\Repository\SubjectRepository');
          $this->app->bind('App\Repository\QuizzeRepositoryInterface', 'App\Repository\QuizzeRepository');
+         $this->app->bind('App\Repository\QuestionRepositoryInterface', 'App\Repository\QuestionRepository');
+
     }
 
     /**

@@ -89,8 +89,7 @@
                         <ul id="chart" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('teacher.index') }}">{{ trans('main_trans.List_Teachers') }}</a>
                             </li>
-                            <li> <a href="chart-morris.html">Chart morris </a> </li>
-                            <li> <a href="chart-sparkline.html">Chart Sparkline</a> </li>
+
                         </ul>
                     </li>
 
@@ -182,6 +181,7 @@
                         </a>
                         <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('Quizzes.index')}}">قائمة الاختبارات</a> </li>
+                            <li> <a href="{{route('Questions.index')}}">قائمة الاختبارات</a> </li>
 
                         </ul>
                     </li>
